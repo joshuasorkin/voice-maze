@@ -1,8 +1,10 @@
 const express = require('express');
+const path = require('path');
 const router = express.Router();
-
+const voiceHTML = '../static_html/voice.html';
 router.get('/',(req,res)=>{
-    res.sendFile(__dirname+"/../static_html/voice.html");
-})
+    res.sendFile(path.join(__dirname,voiceHTML));
+});
+
 
 module.exports = router;
