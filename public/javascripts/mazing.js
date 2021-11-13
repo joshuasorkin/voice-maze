@@ -170,7 +170,8 @@ function Position(x, y) {
         tryPos.y--;
         break;
   
-      case "up": // up
+      case "up":
+      case "upward": // up
         tryPos.x--;
         break;
   
@@ -184,6 +185,7 @@ function Position(x, y) {
         break;
   
       default:
+        console.log(`${voiceInput} not recognized.`)
         return;
   
     }
