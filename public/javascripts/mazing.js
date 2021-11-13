@@ -161,6 +161,38 @@ function Position(x, y) {
     }
   };
   
+  Mazing.prototype.mazeVoiceCommand = function(voiceInput) {
+    var tryPos = new Position(this.heroPos.x, this.heroPos.y);
+    switch(voiceInput)
+    {
+      case "left": // left
+        this.mazeContainer.classList.remove("face-right");
+        tryPos.y--;
+        break;
+  
+      case "up": // up
+        tryPos.x--;
+        break;
+  
+      case "right": // right
+        this.mazeContainer.classList.add("face-right");
+        tryPos.y++;
+        break;
+  
+      case "down": // down
+        tryPos.x++;
+        break;
+  
+      default:
+        return;
+  
+    }
+    this.tryMoveHero(tryPos);
+    //e.preventDefault();
+  };
+
+
+
   Mazing.prototype.mazeKeyPressHandler = function(e) {
     var tryPos = new Position(this.heroPos.x, this.heroPos.y);
     switch(e.keyCode)
