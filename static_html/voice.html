@@ -260,6 +260,7 @@ if (!('webkitSpeechRecognition' in window)) {
     if (typeof(event.results) == 'undefined') {
       recognition.onend = null;
       recognition.stop();
+      window.alert('undefined event');
       upgrade();
       return;
     }
