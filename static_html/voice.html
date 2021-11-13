@@ -103,7 +103,7 @@ a.c1 {font-weight: normal;}
 
   window.addEventListener("DOMContentLoaded", function(e) {
     maze = new Mazing("maze");
-/*  maze.setChildMode(); */
+  maze.setChildMode(); 
   }, false);
 
 </script>
@@ -203,7 +203,7 @@ if (!('webkitSpeechRecognition' in window)) {
   start_button.style.display = 'inline-block';
   var recognition = new webkitSpeechRecognition();
   recognition.continuous = true;
-  recognition.interimResults = false;
+  recognition.interimResults = true;
 
   recognition.onstart = function() {
     recognizing = true;
