@@ -119,7 +119,15 @@ class MazeBuilder {
       for(let i = this.posToWall(r1)-1; i <= this.posToWall(r2)+1; i++) {
         for(let j = this.posToWall(c1)-1; j <= this.posToWall(c2)+1; j++) {
           if((i == this.posToWall(horiz)) || (j == this.posToWall(vert))) {
-            this.maze[i][j] = ["wall"];
+            if(this.rand(0,39)===1){
+              this.maze[i][j] = ["nubbin"]
+            }
+            else if(this.rand(0,39)===1){
+              this.maze[i][j] = ["sentinel"]
+            }
+            else{
+              this.maze[i][j] = ["wall"];
+            }
           }
         }
       }

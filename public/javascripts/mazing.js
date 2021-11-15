@@ -111,15 +111,7 @@ function Position(x, y) {
     var nextStep = this.maze[pos].className;
   
     // before moving
-    if(nextStep.match(/sentinel/)) {
-      this.heroScore = Math.max(this.heroScore - 5, 0);
-      if(!this.childMode && this.heroScore <= 0) {
-        this.gameOver("sorry, you didn't make it");
-      } else {
-        this.setMessage("ow, that hurt!");
-      }
-      return;
-    }
+
     if(nextStep.match(/wall/)) {
       return;
     }
@@ -137,6 +129,16 @@ function Position(x, y) {
     this.maze[pos].classList.add("hero");
     this.heroPos = pos;
   
+    if(nextStep.match(/sentinel/)) {
+      this.heroScore = Math.max(this.heroScore - 5, 0);
+      if(!this.childMode && this.heroScore <= 0) {
+        this.gameOver("sorry, you didn't make it");
+      } else {
+        this.setMessage("ow, that hurt!");
+      }
+      return;
+    }
+
     // after moving
     if(nextStep.match(/nubbin/)) {
       this.heroTakeTreasure();
@@ -165,22 +167,21 @@ function Position(x, y) {
     var tryPos = new Position(this.heroPos.x, this.heroPos.y);
     switch(voiceInput)
     {
-      case "left": // left
+      case "west": // left
         this.mazeContainer.classList.remove("face-right");
         tryPos.y--;
         break;
   
-      case "up":
-      case "upward": // up
+      case "north": // up
         tryPos.x--;
         break;
   
-      case "right": // right
+      case "east": // right
         this.mazeContainer.classList.add("face-right");
         tryPos.y++;
         break;
   
-      case "down": // down
+      case "south": // down
         tryPos.x++;
         break;
   
